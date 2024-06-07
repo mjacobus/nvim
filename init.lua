@@ -28,5 +28,5 @@ lspconfig.solargraph.setup({
 })
 
 vim.defer_fn(function()
-  vim.cmd([[highlight Comment cterm=italic gui=italic guibg=#4c4e69 guifg=#1a1b26]])
+  vim.cmd([[highlight Comment guifg=#222436 guibg=#5c5e77 gui=italic]])
 end, 100)
