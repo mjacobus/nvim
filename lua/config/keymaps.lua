@@ -18,9 +18,6 @@ map("n", "<leader>aj", function()
   alternative_file.open("prev", "--exists")
 end, { desc = "Open previous alternative file" })
 
--- Import the map function from LazyVim
-local map = LazyVim.safe_keymap_set
-
 -- Key mappings
 map("n", "<leader>Q", "<cmd>q!<cr>", { desc = "Quit" })
 map("n", "<leader>q", "<cmd>bdelete<cr>", { desc = "Close buffer" })
