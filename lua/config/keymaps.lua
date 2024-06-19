@@ -81,3 +81,7 @@ end, { desc = "Run test file" })
 map("n", "<leader><leader>st", function()
   require("mj.test_runner").run_shell_test()
 end, { desc = "Run ./shell_test" })
+
+-- quick fix
+map("n", "<leader>gn", ":cnext<CR>", { desc = "Next quickfix occurrency" })
+map("n", "<leader>gp", ":cprev<CR>", { desc = "Previous quickfix occurrency" })
