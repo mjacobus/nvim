@@ -22,6 +22,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.aerial" }, -- <leader>ss list constants
     { import = "lazyvim.plugins.extras.editor.dial" }, -- like speadating
     { import = "lazyvim.plugins.extras.editor.leap" }, -- like easy motion
+    { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     -- import/override with your plugins
     { import = "plugins" },
   },
