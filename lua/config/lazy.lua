@@ -19,8 +19,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.refactoring" },
-    { import = "lazyvim.plugins.extras.editor.aerial" },
-    { import = "lazyvim.plugins.extras.editor.dial" },
+    { import = "lazyvim.plugins.extras.editor.aerial" }, -- <leader>ss list constants
+    { import = "lazyvim.plugins.extras.editor.dial" }, -- like speadating
+    { import = "lazyvim.plugins.extras.editor.leap" }, -- like easy motion
     -- import/override with your plugins
     { import = "plugins" },
   },
