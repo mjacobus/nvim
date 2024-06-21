@@ -82,3 +82,63 @@ end, { desc = "Run ./shell_test" })
 -- quick fix
 map("n", "<leader>gn", ":cnext<CR>", { desc = "Next quickfix occurrency" })
 map("n", "<leader>gp", ":cprev<CR>", { desc = "Previous quickfix occurrency" })
+
+-- rm file
+map("n", "<leader>rm", ":Delete<cr>", { desc = "Delete file" })
+
+-- Last buffer
+map("n", "<leader>o", "<c-^>", { desc = "Last buffer" })
+
+-- Escape terminal mode with jj
+map("t", "<esc>", "<C-\\><C-n>", { desc = "Escape terminal mode" })
+map("t", "jj", "<C-\\><C-n>", { desc = "Escape terminal mode with jj" })
+
+-- Buffer changing
+map("n", "<leader>bn", ":bn<cr>", { desc = "Next buffer" })
+map("n", "<leader>bp", ":bp<cr>", { desc = "Previous buffer" })
+
+-- Find buffer file
+map("n", "<leader><leader>b", ":b<space>", { desc = "Find buffer file" })
+
+-- Search
+map("n", "*", "*N", { desc = "Search and stay" })
+
+-- Select all
+map("n", "<leader>a", "ggVG", { desc = "Select all" })
+
+-- New tab
+map("n", "<c-w>t", ":tabnew<cr>", { desc = "New tab" })
+
+-- Jumps to the next position after the closest closing char
+map("i", ",e", "<Esc>/[\\]})\"']<cr><Esc>:nohlsearch<cr>a", { desc = "Jump to next closing char" })
+
+-- Adds arrow
+map("i", "<C-l>", "<Space>=><Space>", { desc = "Insert arrow" })
+
+-- Rails specific
+map(
+  "v",
+  "<leader>h",
+  ':s/\\:\\([a-zA-Z_]\\+\\)\\s\\+=>/\\=printf("%s:", submatch(1))/g<CR><ESC>:let @/ = ""<CR>',
+  { desc = "Convert hash rocket to symbol" }
+)
+map("n", "<Leader>qq", "<ESC>:q<cr>", { desc = "Quit" })
+
+-- Reload buffer
+map("n", "<Leader>rel", ":e<CR>", { desc = "Reload buffer" })
+
+-- Find
+map("n", "<leader>f", "<ESC>/", { desc = "Find" })
+map("n", "<leader>*", "<ESC>:find<space>", { desc = "Find file" })
+
+-- Use Q for formatting the current paragraph (or selection)
+map("v", "Q", "gq", { desc = "Format selection" })
+map("n", "Q", "gqap", { desc = "Format paragraph" })
+
+-- Buffer resizing mappings (shift + arrow key)
+map("n", "<Up>", "<c-w>+", { desc = "Resize buffer up" })
+map("n", "<Down>", "<c-w>-", { desc = "Resize buffer down" })
+map("n", "<Left>", "<c-w><", { desc = "Resize buffer left" })
+map("n", "<Right>", "<c-w>>", { desc = "Resize buffer right" })
+
+map("n", "<leader><leader>xx", "<esc>:!chmod +x %<cr>", { desc = "Make file executable" })
