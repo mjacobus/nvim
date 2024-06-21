@@ -2,6 +2,16 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- TODO: There are mappings that I did not port yet
+-- For instance: https://github.com/mjacobus/lvim/tree/main/after/ftplugin
+-- https://github.com/mjacobus/lvim/tree/main/after/plugin
+-- https://github.com/mjacobus/lvim/tree/main/autoload
+-- https://github.com/mjacobus/lvim/blob/main/after/plugin/legacy_setup.vim#L179-L212
+-- Maybe some here: https://github.com/mjacobus/lvim/blob/main/lua/config/mappings.lua
+-- And here
+
+vim.keymap.del("n", "<leader>ff") -- conflicts with <leader>f<f>word
+
 local map = LazyVim.safe_keymap_set
 
 -- better up/down
@@ -38,7 +48,7 @@ map("n", "<leader>k", function()
 end, { desc = "Close terminal buffer (false)" })
 
 -- Search mappings
-map("n", "<leader>f", "/", { desc = "Search alias" })
+map("n", "<leader>f", "<cmd>/", { desc = "Search alias" })
 map("n", "<leader>F", "<cmd>nohlsearch<cr>", { desc = "Remove search highlight" })
 
 -- Alternative file
