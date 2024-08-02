@@ -1,7 +1,7 @@
 -- replace this with a lua version
 -- return { "Lokaltog/vim-easymotion" }
 return {
-  "Lokaltog/vim-easymotion",
+  -- "Lokaltog/vim-easymotion",
   -- {
   --   "phaazon/hop.nvim",
   --   branch = "v2", -- optional but strongly recommended
