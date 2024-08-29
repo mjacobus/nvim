@@ -81,6 +81,10 @@ map("n", "<Leader><leader>t", function()
   require("mj.test_runner").test_line()
 end, { desc = "Run test for current line" })
 
+map("n", "<Leader>t", function()
+  require("mj.test_runner").test_line()
+end, { desc = "Run test for current line" })
+
 map("n", "<Leader>T", function()
   require("mj.test_runner").run_test_file()
 end, { desc = "Run test file" })
