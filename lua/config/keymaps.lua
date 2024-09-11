@@ -156,3 +156,5 @@ map("n", "<Left>", "<c-w><", { desc = "Resize buffer left" })
 map("n", "<Right>", "<c-w>>", { desc = "Resize buffer right" })
 
 map("n", "<leader><leader>xx", "<esc>:!chmod +x %<cr>", { desc = "Make file executable" })
+
+map("n", "<leader><leader>b", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in current buffer" })
