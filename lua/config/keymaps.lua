@@ -18,11 +18,20 @@ local map = LazyVim.safe_keymap_set
 map("i", "jj", "<Esc>", { desc = "Go to normal mode" })
 map("n", "<leader>w", "<cmd>write<cr>", { desc = "Save file" })
 
-local alternative_file = require("mj.alternate_file")
-
-map("n", "<leader>ak", function()
+map("v", "<leader>", function()
   alternative_file.open("next", "--exists")
 end, { desc = "Open next alternative file" })
+
+local alternative_file = require("mj.alternate_file")
+
+map("n", "<leader>irc", function()
+  require("mj.ruby_utils").insert_ruby_class_based_on_file_name()
+end, { desc = "Insert ruby class" })
+
+-- this is not working correctly
+-- map("v", "<leader>irc", function()
+--   require("mj.ruby_utils").replace_selected_text_with_ruby_class()
+-- end, { desc = "Replace selected text ruby class" })
 
 map("n", "<leader>aj", function()
   alternative_file.open("prev", "--exists")
