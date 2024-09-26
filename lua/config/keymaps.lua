@@ -25,7 +25,7 @@ end, { desc = "Open next alternative file" })
 local alternative_file = require("mj.alternate_file")
 
 map("n", "<leader>irc", function()
-  require("mj.ruby_utils").insert_ruby_class_based_on_file_name()
+  require("mj.ruby_utils").insert_ruby_class_based_on_file_path()
 end, { desc = "Insert ruby class" })
 
 -- this is not working correctly

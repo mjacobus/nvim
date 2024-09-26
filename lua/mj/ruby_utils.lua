@@ -1,11 +1,20 @@
 local M = {}
 
+-- A Lua-native split function that splits a string by a given delimiter
+local function lua_split(input_str, delimiter)
+  local result = {}
+  for match in (input_str .. delimiter):gmatch("(.-)" .. delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+
 M.snake_case_to_ruby_class = function(path)
   -- Remove .rb suffix if present
   path = path:gsub("%.rb$", "")
 
   -- Split by slash and convert each part to CamelCase
-  local parts = vim.split(path, "/")
+  local parts = lua_split(path, "/")
   for i, part in ipairs(parts) do
     parts[i] = part
       :gsub("_(%a)", function(letter)
@@ -40,32 +49,18 @@ M.replace_selected_text_with_ruby_class = function()
   vim.fn.setline(start_pos[2], ruby_class)
 end
 
-M.insert_ruby_class_based_on_file_name = function()
-  -- Get the current file name (without path)
-  local filename = vim.fn.expand("%:t")
+M.insert_ruby_class_based_on_file_path = function()
+  -- Get the full file path
+  local filepath = vim.fn.expand("%:.")
 
   -- Remove the .rb suffix if present
-  filename = filename:gsub("%.rb$", "")
+  filepath = filepath:gsub("%.rb$", "")
 
-  -- Convert the file name to Ruby class format
-  local ruby_class = M.snake_case_to_ruby_class(filename)
+  -- Convert the file path to Ruby class format
+  local ruby_class = M.snake_case_to_ruby_class(filepath)
 
   -- Insert the class name at the current cursor position
   vim.api.nvim_put({ ruby_class }, "c", true, true)
 end
-
--- Keybindings (adjust as necessary)
-vim.api.nvim_set_keymap(
-  "v",
-  "<leader>r",
-  [[:lua require'module_name'.replace_selected_text_with_ruby_class()<CR>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>i",
-  [[:lua require'module_name'.insert_ruby_class_based_on_file_name()<CR>]],
-  { noremap = true, silent = true }
-)
 
 return M
