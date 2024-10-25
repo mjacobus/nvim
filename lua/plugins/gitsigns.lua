@@ -1,4 +1,5 @@
-require("gitsigns").setup({
+return {
+  "lewis6991/gitsigns.nvim",
   current_line_blame = false,
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
@@ -12,4 +13,4 @@ require("gitsigns").setup({
     -- Stage buffer
     vim.keymap.set("n", "<leader>ga", gs.stage_buffer, { buffer = bufnr })
   end,
-})
+}
