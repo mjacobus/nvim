@@ -7,3 +7,4 @@ local opt = vim.opt
 
 opt.relativenumber = false
 opt.colorcolumn = "100"
+opt.swapfile = false
