@@ -4,12 +4,12 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
-      opts.keys = opts.keys or {}
-      opts.keys["<Space><Space>"] = function()
+      vim.keymap.set("n", "<Space><Space>", function()
+        local project_root = require("project_nvim.project").get_project_root() or vim.fn.getcwd()
         require("telescope.builtin").find_files({
-          cwd = require("project_nvim.project").get_project_root() or vim.fn.getcwd(),
+          cwd = project_root, -- Force project root
         })
-      end
+      end, { desc = "Find Files (Project Root)" })
     end,
   },
   {
@@ -24,3 +24,12 @@ return {
     end,
   },
 }
+
+-- opts = function(_, opts)
+--     vim.keymap.set("n", "<Space><Space>", function()
+--       local project_root = require("project_nvim.project").get_project_root() or vim.fn.getcwd()
+--       require("telescope.builtin").find_files({
+--         cwd = project_root, -- Force project root
+--       })
+--     end, { desc = "Find Files (Project Root)" })
+--   end,
