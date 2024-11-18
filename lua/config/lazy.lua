@@ -82,4 +82,5 @@ require("lazy").setup({
       },
     },
   },
+  lockfile = vim.fn.getcwd() .. "/lazy-lock.json",
 })
