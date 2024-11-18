@@ -167,3 +167,24 @@ map("n", "<Right>", "<c-w>>", { desc = "Resize buffer right" })
 map("n", "<leader><leader>xx", "<esc>:!chmod +x %<cr>", { desc = "Make file executable" })
 
 map("n", "<leader><leader>b", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in current buffer" })
+
+-- Marks
+map("n", "<leader>mA", "ma", { desc = "Set mark 'a'" })
+map("n", "<leader>ma", "'a", { desc = "Go to mark 'a'" })
+map("n", "<leader>m1", "'a", { desc = "Go to mark 'a'" })
+
+map("n", "<leader>mB", "mb", { desc = "Set mark 'b'" })
+map("n", "<leader>mb", "'b", { desc = "Go to mark 'b'" })
+map("n", "<leader>m2", "'b", { desc = "Go to mark 'b'" })
+
+map("n", "<leader>mC", "mc", { desc = "Set mark 'c'" })
+map("n", "<leader>mc", "'c", { desc = "Go to mark 'c'" })
+map("n", "<leader>m3", "'c", { desc = "Go to mark 'c'" })
+
+map("n", "<leader>mD", "md", { desc = "Set mark 'd'" })
+map("n", "<leader>md", "'d", { desc = "Go to mark 'd'" })
+map("n", "<leader>m4", "'d", { desc = "Go to mark 'd'" })
+
+map("n", "<leader>mE", "me", { desc = "Set mark 'e'" })
+map("n", "<leader>me", "'e", { desc = "Go to mark 'e'" })
+map("n", "<leader>m5", "'e", { desc = "Go to mark 'e'" })
