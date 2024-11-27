@@ -188,3 +188,6 @@ map("n", "<leader>m4", "'d", { desc = "Go to mark 'd'" })
 map("n", "<leader>mE", "me", { desc = "Set mark 'e'" })
 map("n", "<leader>me", "'e", { desc = "Go to mark 'e'" })
 map("n", "<leader>m5", "'e", { desc = "Go to mark 'e'" })
+
+-- Notes
+map("n", "<leader>no", ":vs ~/.tmp/notes.md<cr>", { desc = "Open notes" })
