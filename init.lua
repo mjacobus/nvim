@@ -31,6 +31,13 @@ if lspconfig and lspconfig.solargraph and lspconfig.solargraph.setup then
   })
 end
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("%s/\\s\\+$//e")
+  end,
+})
+
 vim.defer_fn(function()
   local light_bg = "#394264"
   local slightly_darker_bg = "#384160"
