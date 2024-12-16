@@ -1,8 +1,12 @@
 local supertab = function(opts)
   local has_words_before = function()
-    unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    if col == 0 then
+      return false
+    end
+    local line_text = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+    local char_before_cursor = line_text:sub(col, col)
+    return not char_before_cursor:match("%s") or char_before_cursor:match("[./]")
   end
 
   local cmp = require("cmp")
@@ -22,7 +26,6 @@ local supertab = function(opts)
   opts.mapping = vim.tbl_extend("force", opts.mapping, {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
         cmp.select_next_item()
       elseif vim.snippet.active({ direction = 1 }) then
         vim.schedule(function()
@@ -35,20 +38,33 @@ local supertab = function(opts)
       end
     end, { "i", "s" }),
     ["<S-Tab>"] = prev,
-    ["<C-Tab>"] = prev,
+  })
+end
+
+local function sources(opts)
+  opts.sources = vim.tbl_extend("force", opts.sources or {}, {
+    {
+      name = "path",
+      option = {
+        trailing_slash = true, -- Adds a trailing slash to directories
+      },
+    },
+    { name = "buffer" },
   })
 end
 
 local function format(opts)
-  -- Set custom formatting to add padding
   opts.formatting = {
     format = function(entry, vim_item)
-      -- vim_item.abbr = " " .. vim_item.abbr .. " " -- Add padding
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        path = "[Path]",
+      })[entry.source.name]
       return vim_item
     end,
   }
 
-  -- Set custom window options
   opts.window = {
     completion = require("cmp").config.window.bordered(),
     documentation = require("cmp").config.window.bordered(),
@@ -61,6 +77,7 @@ return {
     opts = function(_, opts)
       supertab(opts)
       format(opts)
+      sources(opts)
     end,
   },
 }
