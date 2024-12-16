@@ -78,6 +78,11 @@ return {
       supertab(opts)
       format(opts)
       sources(opts)
+      -- Force `cmp-path` to trigger more aggressively
+      opts.completion = {
+        keyword_length = 1, -- Trigger after typing 1 character
+        keyword_pattern = [[\%(\k\|[./]\)\+]], -- Match paths and keywords
+      }
     end,
   },
 }
