@@ -4,9 +4,9 @@ require("config.lazy")
 -- init.lua
 local lspconfig = require("lspconfig")
 
-if lspconfig and lspconfig.ruby_ls and lspconfig.ruby_ls.setup then
+if lspconfig and lspconfig.ruby_lsp and lspconfig.ruby_lsp.setup then
   -- Setup Ruby Language Server
-  lspconfig.ruby_ls.setup({
+  lspconfig.ruby_lsp.setup({
     cmd = { "ruby-lsp" },
     filetypes = { "ruby" },
     settings = {
