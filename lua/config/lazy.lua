@@ -37,6 +37,7 @@ local plugins = {
 
   { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
+  { import = "lazyvim.plugins.extras.editor.telescope" },
   { import = "lazyvim.plugins.extras.editor.harpoon2" },
   { import = "lazyvim.plugins.extras.editor.refactoring" },
   { import = "lazyvim.plugins.extras.editor.aerial" }, -- <leader>ss list constants
