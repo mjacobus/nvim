@@ -1,5 +1,12 @@
 return {
   "LazyVim/LazyVim",
+
+  defaults = {
+    lazy = false, -- Ensures plugins do not update automatically
+    version = false, -- Prevents auto-updating to the latest version
+  },
+
+  -- lockfile = vim.fn.stdpath("data") .. "/lazy/lazy-lock.json", -- Ensures updates use the lock file
   opts = {
     -- colorscheme = "tokyonight-moon",
     colorscheme = "tokyonight-storm",
