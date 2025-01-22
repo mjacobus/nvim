@@ -1,3 +1,9 @@
+-- after/ftplugin/ruby.lua
+local lspconfig = require("lspconfig")
+lspconfig.ruby_lsp.setup({
+  cmd = { vim.fn.expand("~/.asdf/shims/ruby"), "-S", "ruby-lsp" },
+})
+
 local map = LazyVim.safe_keymap_set
 
 -- map("n", "<leader>x", ":lua RunInTerminal('ruby ' .. vim.fn.expand('%'), true)<CR>", { buffer = true })
