@@ -191,3 +191,6 @@ map("n", "<leader>m5", "'e", { desc = "Go to mark 'e'" })
 
 -- Notes
 map("n", "<leader>no", ":vs ~/.tmp/notes.md<cr>", { desc = "Open notes" })
+
+-- shell_test
+map("n", "<leader><leader>1", ":e shell_test<cr>", { desc = "Open shell_test" })
