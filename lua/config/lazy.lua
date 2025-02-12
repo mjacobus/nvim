@@ -42,7 +42,6 @@ local plugins = {
   { import = "lazyvim.plugins.extras.editor.refactoring" },
   { import = "lazyvim.plugins.extras.editor.aerial" }, -- <leader>ss list constants
   { import = "lazyvim.plugins.extras.editor.dial" }, -- like speadating
-  { import = "lazyvim.plugins.extras.editor.leap" }, -- like easy motion
 
   { import = "lazyvim.plugins.extras.lang.ruby" },
   { import = "lazyvim.plugins.extras.lang.typescript" },
