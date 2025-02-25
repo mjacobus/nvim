@@ -1,30 +1,20 @@
 return {
-  "folke/flash.nvim",
-  event = "VeryLazy",
-  opts = {
-    modes = {
-      char = { enabled = false }, -- Disable `f` and `t` enhancements
-    },
-  },
+  "smoka7/hop.nvim",
+  version = "*",
+  opts = {},
   config = function()
-    vim.api.nvim_set_hl(0, "FlashMatch", { fg = "NONE", bg = "NONE", bold = true })
-    vim.api.nvim_set_hl(0, "FlashCurrent", { fg = "#ffffff", bg = "NONE", bold = true })
-    vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ffcc00", bg = "NONE", bold = true })
+    local hop = require("hop")
+    hop.setup()
+    vim.api.nvim_set_hl(0, "HopNextKey", { fg = "#ffcc00", bold = true })
+    vim.api.nvim_set_hl(0, "HopNextKey1", { fg = "#ff8800", bold = true })
+    vim.api.nvim_set_hl(0, "HopNextKey2", { fg = "#ff4400" })
+
+    -- Define key mappings similar to EasyMotion
+    vim.keymap.set("n", "<leader><leader>f", function()
+      require("hop").hint_char1({
+        direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+        current_line_only = false,
+      })
+    end, { desc = "Jump to character (EasyMotion-like)" })
   end,
-  keys = {
-    {
-      "<leader><leader>f",
-      function()
-        require("flash").jump({
-          search = {
-            forward = true,
-            wrap = true,
-            multi_window = false,
-          },
-        })
-      end,
-      mode = { "n", "x", "o" },
-      desc = "Jump to character (EasyMotion)",
-    },
-  },
 }
