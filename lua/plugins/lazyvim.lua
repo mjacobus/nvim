@@ -8,6 +8,7 @@ return {
 
   -- lockfile = vim.fn.stdpath("data") .. "/lazy/lazy-lock.json", -- Ensures updates use the lock file
   opts = {
+
     -- colorscheme = "tokyonight-moon",
     colorscheme = "tokyonight-storm",
     config = function()
@@ -17,5 +18,8 @@ return {
         vim.cmd([[highlight Comment guifg=#222436 guibg=#5c5e77 gui=italic]])
       end, 1000)
     end,
+    keys = {
+      -- { "<leader>ff", false }, -- disable a key
+    },
   },
 }

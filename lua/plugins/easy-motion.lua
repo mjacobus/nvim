@@ -1,32 +1,50 @@
--- replace this with a lua version
--- return { "Lokaltog/vim-easymotion" }
 return {
-  -- "Lokaltog/vim-easymotion",
-  -- {
-  --   "phaazon/hop.nvim",
-  --   branch = "v2", -- optional but strongly recommended
-  --   config = function()
-  --     local map = require("lazyvim").safe_keymap_set
-  --     local hop = require("hop")
-  --     local directions = require("hop.hint").HintDirection
-  --
-  --     hop.setup({ keys = "etovxqpdygfblzhckisuran" })
-  --
-  --     map("", "f", function()
-  --       hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-  --     end, { desc = "Hop to character after cursor", remap = true })
-  --
-  --     map("", "F", function()
-  --       hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-  --     end, { desc = "Hop to character before cursor", remap = true })
-  --
-  --     map("", "t", function()
-  --       hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-  --     end, { desc = "Hop to character after cursor with offset", remap = true })
-  --
-  --     map("", "T", function()
-  --       hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
-  --     end, { desc = "Hop to character before cursor with offset", remap = true })
-  --   end,
-  -- },
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  opts = {
+    modes = {
+      char = { enabled = false }, -- Disable `f` and `t` enhancements
+    },
+  },
+  keys = {
+    -- <leader>f{char} to move to {char}
+    {
+      "<leader><leader>f",
+      function()
+        require("flash").jump({ search = { mode = "search" } })
+      end,
+      mode = { "n", "x", "o" },
+      desc = "Jump to character (EasyMotion)",
+    },
+
+    -- s{char}{char} to move to {char}{char}
+    {
+      "<leader>sf",
+      function()
+        require("flash").jump({ pattern = ".", search = { mode = "search", multi_window = true } })
+      end,
+      mode = { "n", "x", "o" },
+      desc = "Jump to character pair",
+    },
+
+    -- Move to line
+    {
+      "<leader>L",
+      function()
+        require("flash").jump({ search = { mode = "lines", multi_window = true } })
+      end,
+      mode = { "n", "x", "o" },
+      desc = "Jump to line",
+    },
+
+    -- Move to word
+    {
+      "<leader>w",
+      function()
+        require("flash").jump({ search = { mode = "words", multi_window = true } })
+      end,
+      mode = { "n", "x", "o" },
+      desc = "Jump to word",
+    },
+  },
 }
