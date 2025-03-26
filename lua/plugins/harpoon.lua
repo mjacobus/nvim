@@ -69,7 +69,7 @@ return {
 
     local set = LazyVim.safe_keymap_set
 
-    set("n", "<leader>h", function()
+    set("n", "<leader>H", function()
       toggle_telescope(harpoon:list())
     end, { desc = "Open harpoon window" })
   end,
