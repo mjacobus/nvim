@@ -23,7 +23,7 @@ return {
         desc = "Harpoon File",
       },
       {
-        "<leader>h",
+        "<leader>eh", -- edit harpoon
         function()
           local harpoon = require("harpoon")
           harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -69,7 +69,7 @@ return {
 
     local set = LazyVim.safe_keymap_set
 
-    set("n", "<leader>fh", function()
+    set("n", "<leader>h", function()
       toggle_telescope(harpoon:list())
     end, { desc = "Open harpoon window" })
   end,
