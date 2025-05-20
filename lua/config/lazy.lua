@@ -31,7 +31,7 @@ local plugins = {
   { import = "lazyvim.plugins.extras.coding.neogen" }, -- generate annotations
 
   { import = "lazyvim.plugins.extras.ai.copilot" },
-  -- { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
+  { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
 
   { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
