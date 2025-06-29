@@ -1,7 +1,7 @@
 return {
   "rking/ag.vim",
   config = function()
-    local map = LazyVim.safe_keymap_set
+    local map = vim.keymap.set
 
     map("n", "<leader>ag", ":Ag!<space>", { desc = "Ag! file" })
     map("n", "<leader>g#", ":Ag! -w <C-R><C-W><space>", { desc = "Ag! word under cursor" })
