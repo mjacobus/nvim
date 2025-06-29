@@ -1,3 +1,10 @@
+vim.g.swap = false
+
+vim.opt.relativenumber = false
+vim.opt.colorcolumn = "100"
+vim.opt.swapfile = false
+
+-- suggested by chatgpt
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2
@@ -9,5 +16,3 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 300
 vim.opt.scrolloff = 8
-
-
