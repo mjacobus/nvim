@@ -13,4 +13,5 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "nvim-telescope/telescope.nvim", tag = "0.1.5" },
   { "catppuccin/nvim", name = "catppuccin" },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, }
 })
