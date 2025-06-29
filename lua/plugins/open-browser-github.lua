@@ -2,7 +2,7 @@ return {
   "tyru/open-browser-github.vim",
   dependencies = { { "tyru/open-browser.vim" } },
   config = function()
-    local map = LazyVim.safe_keymap_set
+    local map = vim.keymap.set
 
     map("n", "<leader>of", function()
       vim.cmd("OpenGithubFile")
