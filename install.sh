@@ -7,8 +7,8 @@ mkdir -p $targetDir
 flags="--verbose=1 -t ${targetDir}"
 
 if [[ "$args" == "--uninstall" ]]; then
-  echo 'Uninstalling'
-  flags="-D --verbose=1 -t $HOME"
+	echo 'Uninstalling'
+	flags="-D --verbose=1 -t $targetDir"
 fi
 
-stow $flags .   # newest
+stow $flags . # newest
