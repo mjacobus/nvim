@@ -1,6 +1,12 @@
+-- [DEPRECATED] The configuration of `claude` should be placed in `providers.claude`. For detailed migration instructions,
+-- [DEPRECATED] The configuration of `claude.max_tokens` should be placed in `providers.claude.extra_request_body.max_toke
+-- ns`; for detailed migration instructions, please visit: https://github.com/yetone/avante.nvim/wiki/Provider-configurati
+-- [DEPRECATED] The configuration of `openai` should be placed in `providers.openai`. For detailed migration instructions,
+--  please visit: https://github.com/yetone/avante.nvim/wiki/Provider-configuration-migration-guide      
+
 return {
   "yetone/avante.nvim",
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
@@ -8,20 +14,26 @@ return {
     -- for example
     -- provider = "openai",
     provider = "claude",
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-3-5-sonnet-20241022",
-      temperature = 0,
-      max_tokens = 4096,
-    },
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-      temperature = 0,
-      max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-    },
+    providers = { 
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20241022",
+        extra_request_body = {
+          temperature = 0,
+          max_tokens = 4096,
+        }
+      },
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        extra_request_body = {
+          temperature = 0,
+          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        }
+        --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      },
+    }
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
