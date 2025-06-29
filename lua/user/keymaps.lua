@@ -1,3 +1,10 @@
+-- TODO: There are mappings that I did not port yet
+-- For instance: https://github.com/mjacobus/lvim/tree/main/after/ftplugin
+-- https://github.com/mjacobus/lvim/tree/main/after/plugin
+-- https://github.com/mjacobus/lvim/tree/main/autoload
+-- https://github.com/mjacobus/lvim/blob/main/after/plugin/legacy_setup.vim#L179-L212
+-- Maybe some here: https://github.com/mjacobus/lvim/blob/main/lua/config/mappings.lua
+
 vim.g.mapleader = " "
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
