@@ -1,7 +1,7 @@
 return {
   "folke/zen-mode.nvim",
   config = function()
-    local map = LazyVim.safe_keymap_set
+    local map = vim.keymap.set
 
     local cmd = function()
       local zen = require("zen-mode")
