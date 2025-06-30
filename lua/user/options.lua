@@ -1,5 +1,8 @@
 vim.g.swap = false
 
+-- Use system clipboard
+vim.opt.clipboard = "unnamedplus"
+
 vim.opt.relativenumber = false
 vim.opt.colorcolumn = "100"
 vim.opt.swapfile = false
