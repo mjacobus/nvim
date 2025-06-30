@@ -105,3 +105,24 @@ map("n", "<leader>no", ":vs ~/.tmp/notes.md<cr>", opts)
 
 -- Open shell_test
 map("n", "<leader><leader>1", ":e shell_test<cr>", opts)
+
+
+map("n", "<Leader><leader>at", function()
+  require("mj.test_runner").run_all_tests()
+end, { desc = "Run all tests" })
+
+map("n", "<Leader><leader>t", function()
+  require("mj.test_runner").test_line()
+end, { desc = "Run test for current line" })
+
+map("n", "<Leader>t", function()
+  require("mj.test_runner").test_line()
+end, { desc = "Run test for current line" })
+
+map("n", "<Leader>T", function()
+  require("mj.test_runner").run_test_file()
+end, { desc = "Run test file" })
+
+map("n", "<leader><leader>st", function()
+  require("mj.test_runner").run_shell_test()
+end, { desc = "Run ./shell_test" })
