@@ -1,3 +1,15 @@
+-- Create parent directories when saving a file
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    local dir = vim.fn.expand("<afile>:p:h")
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end,
+})
+
+-- Load project specific configuration
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     local project_config = vim.fn.getcwd() .. "/.project.lua"
@@ -7,7 +19,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
--- remove trailing spaces
+-- Remove trailing spaces
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
