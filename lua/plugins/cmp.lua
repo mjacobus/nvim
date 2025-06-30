@@ -40,6 +40,20 @@ return {
       "hrsh7th/cmp-cmdline", -- Cmdline completions
       "saadparwaiz1/cmp_luasnip", -- Snippet completions
       {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        build = ":Copilot auth",
+        opts = {
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        },
+      },
+      {
+        "zbirenbaum/copilot-cmp",
+        dependencies = "copilot.lua",
+        opts = {},
+      },
+      {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
         build = "make install_jsregexp",
@@ -96,6 +110,7 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
+          { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
@@ -111,6 +126,7 @@ return {
               nvim_lsp = "[LSP]",
               luasnip = "[Snippet]",
               path = "[Path]",
+              copilot = "[Copilot]",
             })[entry.source.name]
             return vim_item
           end
