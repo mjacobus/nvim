@@ -2,7 +2,7 @@
 -- [DEPRECATED] The configuration of `claude.max_tokens` should be placed in `providers.claude.extra_request_body.max_toke
 -- ns`; for detailed migration instructions, please visit: https://github.com/yetone/avante.nvim/wiki/Provider-configurati
 -- [DEPRECATED] The configuration of `openai` should be placed in `providers.openai`. For detailed migration instructions,
---  please visit: https://github.com/yetone/avante.nvim/wiki/Provider-configuration-migration-guide      
+--  please visit: https://github.com/yetone/avante.nvim/wiki/Provider-configuration-migration-guide
 
 return {
   "yetone/avante.nvim",
@@ -14,7 +14,7 @@ return {
     -- for example
     -- provider = "openai",
     provider = "claude",
-    providers = { 
+    providers = {
       claude = {
         endpoint = "https://api.anthropic.com",
         model = "claude-3-5-sonnet-20241022",
