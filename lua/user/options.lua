@@ -19,3 +19,8 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 300
 vim.opt.scrolloff = 8
+
+
+-- Diagnostic config
+-- TODO: Do I still need this?
+-- vim.diagnostic.config({ virtual_text = false })
