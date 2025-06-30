@@ -33,6 +33,11 @@ return {
           max_completion_tokens = 2048, -- Reduced to save costs
         }
       },
+      copilot = {
+        -- Copilot provider configuration
+        suggestion = { enabled = false }, -- Disable suggestions as they're handled by copilot.lua
+        panel = { enabled = false }, -- Disable panel as we're using it as a provider
+      },
     }
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
