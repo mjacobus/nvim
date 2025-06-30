@@ -20,6 +20,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 300
 vim.opt.scrolloff = 8
 vim.opt.splitright = true
+vim.opt.wrap = false
 
 
 -- Diagnostic config
