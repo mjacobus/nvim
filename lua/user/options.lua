@@ -19,6 +19,7 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 300
 vim.opt.scrolloff = 8
+vim.opt.splitright = true
 
 
 -- Diagnostic config
