@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Mapping for line diagnostics
 vim.g.swap = false
 
