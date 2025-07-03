@@ -26,6 +26,10 @@ vim.opt.splitright = true
 vim.opt.wrap = false
 
 
+-- Enable smart case search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Diagnostic config
 -- TODO: Do I still need this?
 -- vim.diagnostic.config({ virtual_text = false })
