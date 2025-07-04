@@ -55,6 +55,12 @@ return {
         end, opts)
       end
 
+      -- Custom Diagnostics Keymaps
+      vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
+      vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Set Loclist Diagnostics' })
+
       -- Ruby LSP
       lspconfig.ruby_lsp.setup({
         cmd = { vim.fn.expand("~/.asdf/shims/ruby"), "-S", "ruby-lsp" },
