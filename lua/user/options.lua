@@ -10,6 +10,12 @@ vim.opt.relativenumber = false
 vim.opt.colorcolumn = "100"
 vim.opt.swapfile = false
 
+-- undo
+--
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
+-- vim.fn.mkdir(vim.opt.undodir:get(), "p")
+
 -- suggested by chatgpt
 vim.opt.number = true
 vim.opt.relativenumber = true
