@@ -1,14 +1,12 @@
 vim.g.mapleader = " "
 
--- Mapping for line diagnostics
-vim.g.swap = false
-
 -- Use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.relativenumber = false
 vim.opt.colorcolumn = "100"
 vim.opt.swapfile = false
+vim.g.swap = false
 
 -- undo
 --
@@ -18,7 +16,6 @@ vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 
 -- suggested by chatgpt
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
