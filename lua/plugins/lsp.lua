@@ -94,6 +94,35 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
+
+
+      -- NOTE: Not sure this works
+      -- Auto-import missing imports on save for JS/TS
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+        callback = function()
+          local params = {
+            context = {
+              only = { "source.addMissingImports.ts" },
+            },
+          }
+          local clients = vim.lsp.get_active_clients({ name = "ts_ls" })
+          for _, client in ipairs(clients) do
+            if client.supports_method("textDocument/codeAction") then
+              vim.lsp.buf_request(0, "textDocument/codeAction", vim.lsp.util.make_range_params(), function(_, result)
+                if result and result[1] then
+                  if result[1].edit then
+                    vim.lsp.util.apply_workspace_edit(result[1].edit, client.offset_encoding or "utf-8")
+                  end
+                  if result[1].command then
+                    vim.lsp.buf.execute_command(result[1].command)
+                  end
+                end
+              end)
+            end
+          end
+        end,
+      })
     end,
   }
 }
