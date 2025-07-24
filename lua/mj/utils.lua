@@ -34,7 +34,17 @@ function M.branch_files(opts)
   local diff_filter = include_deleted and "" or "--diff-filter=d"
   local git_cmd =
     string.format("git diff --name-status %s %s...%s | awk '{print $2}'", diff_filter, base_branch, current_branch)
-  return vim.fn.systemlist(git_cmd)
+  local files = vim.fn.systemlist(git_cmd)
+
+  -- Filter the list to include only existing files
+  local existing_files = {}
+  for _, file in ipairs(files) do
+    if vim.loop.fs_stat(file) then
+      table.insert(existing_files, file)
+    end
+  end
+
+  return existing_files
 end
 
 M.branch_files()
