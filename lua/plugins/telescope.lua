@@ -29,6 +29,7 @@ return {
     cmd = "Telescope",
     keys = {
       -- Files
+      { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find files with Telescope git_files" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
       { "<Space><Space>", function()
