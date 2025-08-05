@@ -13,7 +13,8 @@ local function searchBranchFiles()
       finder = finders.new_table({
         results = results,
       }),
-      sorter = sorters.get_generic_fuzzy_sorter(),
+      -- @see https://github.com/nvim-telescope/telescope.nvim/tree/master?tab=readme-ov-file#sorters
+      sorter = sorters.get_fzy_sorter(),
       previewer = previewers.vim_buffer_cat.new({}),
     })
     :find()
