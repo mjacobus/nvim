@@ -26,7 +26,12 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
+      "nvim-telescope/telescope-fzy-native.nvim",
     },
+    config = function()
+      local telescope = require("telescope")
+      telescope.load_extension("fzy_native")
+    end,
     cmd = "Telescope",
     keys = {
       -- Files
@@ -76,6 +81,7 @@ return {
       defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
+        -- sorter = require("telescope.sorters").get_fzy_sorter(), -- TODO: Check if this will be needed
         mappings = {
           i = {
             ["<C-j>"] = function(...)
