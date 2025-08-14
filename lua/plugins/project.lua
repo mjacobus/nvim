@@ -5,7 +5,11 @@ return {
     config = function()
       require("project_nvim").setup({
         detection_methods = { "pattern" },
-        patterns = { ".git", "Gemfile", "package.json" }, -- Adjust as needed
+        patterns = {
+          ".git",
+          "Gemfile",
+          -- "package.json",
+        }, -- Adjust as needed
         sync_root_with_cwd = true, -- Sync `cwd` with project root
       })
 
