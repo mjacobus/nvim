@@ -33,8 +33,6 @@ vim.opt.wrap = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.isfname:remove(":")
-
 -- Diagnostic config
 -- TODO: Do I still need this?
 -- vim.diagnostic.config({ virtual_text = false })

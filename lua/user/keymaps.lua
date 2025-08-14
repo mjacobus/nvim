@@ -155,6 +155,19 @@ map("n", "<leader>irc", function()
   require("mj.ruby_utils").insert_ruby_class_based_on_file_path()
 end, { desc = "Insert ruby class" })
 
+-- Fix a quirk with isfname including ":"
+-- This vim.opt.isfname:remove(":") may be overwritten on new buffers
+map("n", "gf", function()
+  local raw = vim.fn.expand("<cfile>")
+  local file, lnum, col = raw:match("^(.*):(%d+):?(%d*)$")
+  if file then
+    vim.cmd.edit(vim.fn.fnameescape(file))
+    if lnum then vim.api.nvim_win_set_cursor(0, { tonumber(lnum), math.max(tonumber(col) - 1, 0) }) end
+  else
+    vim.cmd.edit(vim.fn.fnameescape(raw))
+  end
+end, { desc = "goto file (supports file:line[:col])" })
+
 -- this is not working correctly
 -- map("v", "<leader>irc", function()
 --   require("mj.ruby_utils").replace_selected_text_with_ruby_class()
