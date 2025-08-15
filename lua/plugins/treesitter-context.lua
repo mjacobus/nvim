@@ -1,7 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
-  -- event = "LazyFile",
-  opts = { mode = "cursor", max_lines = 3 },
+  event = "BufReadPost",
+  opts = {
+    mode = "topline", -- default is 'cursor'
+    max_lines = 3,
+  },
   keys = {
     {
       "<leader>ut",
