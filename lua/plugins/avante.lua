@@ -14,7 +14,7 @@ return {
     -- for example
     -- provider = "openai",
     provider = "claude",
-    provider = "copilot",
+    -- provider = "copilot",
     providers = {
       claude = {
         endpoint = "https://api.anthropic.com",
