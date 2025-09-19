@@ -66,7 +66,7 @@ return {
 
       -- Ruby LSP
       lspconfig.ruby_lsp.setup({
-        cmd = { vim.fn.expand("~/.asdf/shims/ruby"), "-S", "ruby-lsp" },
+        -- cmd = { vim.fn.expand("~/.asdf/shims/ruby"), "-S", "ruby-lsp" },
         capabilities = capabilities,
         on_attach = on_attach,
       })
