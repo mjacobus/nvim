@@ -33,12 +33,35 @@ local config = function(_, opts)
   end
 end
 
+
 return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- "hrsh7th/cmp-nvim-lsp",
-      'saghen/blink.cmp'
+      'saghen/blink.cmp',
+      {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+        config = true,
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function()
+          require("mason-lspconfig").setup {
+            ensure_installed = {
+              "ruby_lsp",
+              "ts_ls",
+              "html",
+              "cssls",
+              "dartls",
+              "lua_ls",
+            },
+            automatic_installation = true,
+          }
+        end,
+      }
     },
     opts = {
       servers = {
