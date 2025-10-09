@@ -55,7 +55,6 @@ return {
               "ts_ls",
               "html",
               "cssls",
-              "dartls",
               "lua_ls",
             },
             automatic_installation = true,
@@ -69,7 +68,6 @@ return {
         ts_ls = { on_attach = on_attach },
         html = { on_attach = on_attach },
         cssls = { on_attach = on_attach },
-        dartls = { on_attach = on_attach },
         lua_ls = { on_attach = on_attach },
       }
     },
