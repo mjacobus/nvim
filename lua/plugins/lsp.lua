@@ -23,17 +23,6 @@ local on_attach = function(client, bufnr)
   end, opts)
 end
 
-local config = function(_, opts)
-  local lspconfig = require('lspconfig')
-  for server, config in pairs(opts.servers) do
-    -- passing config.capabilities to blink.cmp merges with the capabilities in your
-    -- `opts[server].capabilities, if you've defined it
-    config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-    lspconfig[server].setup(config)
-  end
-end
-
-
 return {
   {
     "neovim/nvim-lspconfig",
@@ -49,7 +38,10 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
         config = function()
-          require("mason-lspconfig").setup {
+          local lspconfig = require('lspconfig')
+          local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+          require("mason-lspconfig").setup({
             ensure_installed = {
               "ruby_lsp",
               "ts_ls",
@@ -58,19 +50,18 @@ return {
               "lua_ls",
             },
             automatic_installation = true,
-          }
+            handlers = {
+              function(server_name) -- default handler (optional)
+                lspconfig[server_name].setup({
+                  on_attach = on_attach,
+                  capabilities = capabilities,
+                })
+              end,
+            },
+          })
         end,
       }
     },
-    opts = {
-      servers = {
-        ruby_lsp = { on_attach = on_attach },
-        ts_ls = { on_attach = on_attach },
-        html = { on_attach = on_attach },
-        cssls = { on_attach = on_attach },
-        lua_ls = { on_attach = on_attach },
-      }
-    },
-    config = config,
+    config = function() end,
   }
 }
