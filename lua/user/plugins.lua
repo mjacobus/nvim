@@ -16,4 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 --   { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, }
 -- })
 
-require('lazy').setup('plugins') -- lua/plugins/*
+require('lazy').setup('plugins', {
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
+}) -- lua/plugins/*
