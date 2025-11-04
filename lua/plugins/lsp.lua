@@ -41,6 +41,7 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
+    enabled = false,
     dependencies = {
       "saghen/blink.cmp",
       { "williamboman/mason.nvim", build = ":MasonUpdate", config = true },

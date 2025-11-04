@@ -1,3 +1,4 @@
 return {
-  'Saghen/blink.cmp'
+  'Saghen/blink.cmp',
+  enabled = false,
 }
