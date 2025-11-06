@@ -1,3 +1,4 @@
+-- TODO: Fix accept
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
@@ -24,22 +25,22 @@ return {
     },
     completion = {
       menu = {
-        -- border = nil,
-        scrolloff = 1,
+        border = 'single',
+        -- scrolloff = 1,
         scrollbar = false,
-        draw = {
-          columns = {
-            { "kind_icon" },
-            { "label", "label_description", gap = 1 },
-            -- { "kind" },
-            { "source_name" },
-          },
-        },
+        -- draw = {
+        --   columns = {
+        --     { "kind_icon" },
+        --     { "label", "label_description", gap = 1 },
+        --     -- { "kind" },
+        --     -- { "source_name" },
+        --   },
+        -- },
       },
       documentation = {
         window = {
-          border = nil,
-          scrollbar = false,
+          border = 'single',
+          scrollbar = true,
           winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
         },
         auto_show = true,
