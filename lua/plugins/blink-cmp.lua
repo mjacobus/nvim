@@ -1,4 +1,10 @@
 -- NOTE: conflicts with lua/plugins/cmp.lua
+local map = vim.keymap.set
+
+map("i", "<C-n>", function ()
+  require('blink.cmp').show()
+end, { desc = "Display blink menu" })
+
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
@@ -29,7 +35,12 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default' },
+    keymap = {
+      preset = 'default',
+      ['<C-a>'] = { function(cmp) cmp.accept() end },
+      ['<C-t>'] = { function(cmp) cmp.accept() end },
+      ['<tab>'] = { function(cmp) cmp.accept() end },
+    },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -47,7 +58,7 @@ return {
           columns = {
             { "kind_icon" },
             { "label",      "label_description", gap = 1 },
-            -- { "kind" },
+            { "kind" },
             -- { "source_name" },
           },
         },
