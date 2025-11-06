@@ -1,3 +1,4 @@
+-- NOTE: See lua/plugins/blink-cmp.lua
 -- I've set up a comprehensive completion system using nvim-cmp with the following features:
 --
 -- 1. Main Completion Sources:
@@ -31,6 +32,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    enabled = false,
     version = false, -- last release is way too old
     event = "InsertEnter",
     dependencies = {
