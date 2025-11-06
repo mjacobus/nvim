@@ -43,13 +43,22 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "saghen/blink.cmp",
-      { "williamboman/mason.nvim", build = ":MasonUpdate", config = true },
       {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "neovim/nvim-lspconfig" },
+        dependencies = {
+          "neovim/nvim-lspconfig",
+          { "williamboman/mason.nvim", build = ":MasonUpdate", config = true },
+        },
         config = function()
           require("mason-lspconfig").setup {
-            ensure_installed = { "ruby_lsp", "ts_ls", "html", "cssls", "lua_ls" },
+            ensure_installed = {
+              "copilot",
+              "ruby_lsp",
+              "ts_ls",
+              "html",
+              "cssls",
+              "lua_ls",
+            },
             automatic_installation = true,
           }
         end,
