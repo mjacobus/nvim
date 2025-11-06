@@ -1,23 +1,22 @@
--- NOTE: conflicts with lua/plugins/cmp.lua
-local map = vim.keymap.set
-
-map("i", "<C-n>", function ()
-  require('blink.cmp').show()
-end, { desc = "Display blink menu" })
-
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = {
-    'rafamadriz/friendly-snippets',
     "fang2hou/blink-copilot",
+    'rafamadriz/friendly-snippets',
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      build = "make install_jsregexp"
+    }
   },
   version = '1.*',
   build = 'cargo build --release',
   opts_extend = { "sources.default" },
   opts = {
-    -- See :h blink-cmp-config-keymap for defining your own keymap
+    fuzzy = { implementation = "prefer_rust_with_warning" },
     keymap = {
+      -- See :h blink-cmp-config-keymap for defining your own keymap
       preset = 'default',
     },
     appearance = {
@@ -31,9 +30,9 @@ return {
         draw = {
           columns = {
             { "kind_icon" },
-            { "label",      "label_description", gap = 1 },
+            { "label", "label_description", gap = 1 },
             { "kind" },
-            -- { "source_name" },
+            { "source_name" },
           },
         },
       },
@@ -63,9 +62,15 @@ return {
         },
       },
     },
-    fuzzy = { implementation = "prefer_rust_with_warning" }
   },
   config = function(_plugin, opts)
+    local map = vim.keymap.set
+
+    map("i", "<C-n>", function ()
+      require('blink.cmp').show()
+    end, { desc = "Display blink menu" })
+
+    -- require("luasnip.loaders.from_vscode").lazy_load() NOTE: This is not working. Not sure I want it.
     require("blink.cmp").setup(opts)
   end,
 }

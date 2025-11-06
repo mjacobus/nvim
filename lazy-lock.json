@@ -31,7 +31,7 @@
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "tabular": { "branch": "master", "commit": "12437cd1b53488e24936ec4b091c9324cafee311" },
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
-  "telescope.nvim": { "branch": "master", "commit": "7dbbcfdd4d1622ee7152b9b18cafbddd712a1fd1" },
+  "telescope.nvim": { "branch": "master", "commit": "c41b36d646c9d78fae9f1d64e0e86cdeeeb8a066" },
   "themery.nvim": { "branch": "main", "commit": "bfa58f4b279d21cb515b28023e1b68ec908584b2" },
   "todo-comments.nvim": { "branch": "main", "commit": "411503d3bedeff88484de572f2509c248e499b38" },
   "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
