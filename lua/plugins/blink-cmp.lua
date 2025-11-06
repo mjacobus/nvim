@@ -31,7 +31,7 @@ return {
           columns = {
             { "kind_icon" },
             { "label", "label_description", gap = 1 },
-            { "kind" },
+            -- { "kind" },
             { "source_name" },
           },
         },
