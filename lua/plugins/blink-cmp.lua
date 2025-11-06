@@ -29,7 +29,7 @@ return {
     fuzzy = { implementation = "prefer_rust_with_warning" },
     keymap = {
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      preset = 'default',
+      preset = 'enter',
     },
     appearance = {
       nerd_font_variant = 'mono'
