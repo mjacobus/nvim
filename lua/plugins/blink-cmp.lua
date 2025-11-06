@@ -37,9 +37,9 @@ return {
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
       preset = 'default',
-      ['<C-a>'] = { function(cmp) cmp.accept() end },
-      ['<C-t>'] = { function(cmp) cmp.accept() end },
-      ['<tab>'] = { function(cmp) cmp.accept() end },
+      -- ['<enter>'] = { function(cmp) cmp.accept() end },
+      -- ['<C-a>'] = { function(cmp) cmp.accept() end },
+      -- ['<C-t>'] = { function(cmp) cmp.accept() end },
     },
 
     appearance = {
@@ -51,7 +51,7 @@ return {
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
       menu = {
-        border = nil,
+        -- border = nil,
         scrolloff = 1,
         scrollbar = false,
         draw = {
