@@ -25,12 +25,23 @@ return {
     conform.setup({
       formatters_by_ft = {
         sql = { "sqlfluff" },
-        -- …other filetypes…
+        xml = { "tidy" },
       },
       formatters = {
         sqlfluff = {
           args = { "format", "--dialect", "postgres", "-" },
           stdin = true,
+        },
+        tidy = {
+          command = "tidy",
+          args = {
+            "-quiet",
+            "-indent",
+            "-xml",
+            "-utf8",
+          },
+          stdin = true,
+          stdout = true,
         },
       },
 
