@@ -1,3 +1,94 @@
 return {
-  'Saghen/blink.cmp'
+  'saghen/blink.cmp',
+  -- optional: provides snippets for the snippet source
+  dependencies = {
+    "fang2hou/blink-copilot",
+    'rafamadriz/friendly-snippets',
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      build = "make install_jsregexp"
+    },
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
+  },
+  version = '1.*',
+  build = 'cargo build --release',
+  opts_extend = { "sources.default" },
+  opts = {
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+    keymap = {
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      preset = 'enter',
+    },
+    appearance = {
+      nerd_font_variant = 'mono'
+    },
+    completion = {
+      menu = {
+        border = 'single',
+        -- scrolloff = 1,
+        scrollbar = false,
+        -- draw = {
+        --   columns = {
+        --     { "kind_icon" },
+        --     { "label", "label_description", gap = 1 },
+        --     -- { "kind" },
+        --     -- { "source_name" },
+        --   },
+        -- },
+      },
+      documentation = {
+        window = {
+          border = 'single',
+          scrollbar = true,
+          winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
+        },
+        auto_show = true,
+        auto_show_delay_ms = 500,
+      },
+    },
+    sources = {
+      default = {
+        'lazydev',
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+        'copilot',
+      },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          async = true,
+        },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+      },
+    },
+  },
+  config = function(_plugin, opts)
+    local map = vim.keymap.set
+
+    map("i", "<C-n>", function ()
+      require('blink.cmp').show()
+    end, { desc = "Display blink menu" })
+
+    -- require("luasnip.loaders.from_vscode").lazy_load() NOTE: This is not working. Not sure I want it.
+    require("blink.cmp").setup(opts)
+  end,
 }
