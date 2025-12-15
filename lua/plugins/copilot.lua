@@ -16,11 +16,6 @@ return {
         json = false,
       },
     },
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "copilot.lua" },
-    opts = {},
-  },
+  }
 }
 
