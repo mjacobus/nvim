@@ -187,12 +187,12 @@ map("t", "<esc>", "<C-\\><C-n>", { desc = "Escape terminal mode" })
 map("t", "jj", "<C-\\><C-n>", { desc = "Escape terminal mode with jj" })
 
 
-map("i", "<C-l>", function()
-  local cmp = require("cmp")
-
-  if cmp.visible() then
-    cmp.confirm({ select = true })
-  else
-    return vim.fn["copilot#Accept"]()
-  end
-end, { expr = true, silent = true, desc = "Accept Copilot or CMP" })
+-- map("i", "<C-l>", function()
+--   local cmp = require("cmp")
+--
+--   if cmp.visible() then
+--     cmp.confirm({ select = true })
+--   else
+--     return vim.fn["copilot#Accept"]()
+--   end
+-- end, { expr = true, silent = true, desc = "Accept Copilot or CMP" })
