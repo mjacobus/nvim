@@ -1,3 +1,3 @@
 return {
-  'Saghen/blink.cmp'
+  'Saghen/blink.cmp',
 }

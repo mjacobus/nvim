@@ -1,0 +1,26 @@
+return {
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        ruby = true,
+        lua = true,
+        javascript = true,
+        typescript = true,
+        yaml = false,
+        json = false,
+      },
+    },
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    dependencies = { "copilot.lua" },
+    opts = {},
+  },
+}
+

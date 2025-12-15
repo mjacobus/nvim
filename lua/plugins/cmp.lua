@@ -1,33 +1,3 @@
--- I've set up a comprehensive completion system using nvim-cmp with the following features:
---
--- 1. Main Completion Sources:
---    - LSP completions (cmp-nvim-lsp)
---    - Snippets (LuaSnip + friendly-snippets)
---    - Buffer words (cmp-buffer)
---    - File paths (cmp-path)
---    - Command line completions (cmp-cmdline)
---
--- 2. Key Mappings:
---    - `<C-n>/<C-p>` - Navigate through completion items
---    - `<C-b>/<C-f>` - Scroll documentation
---    - `<C-Space>` - Trigger completion
---    - `<C-e>` - Close completion window
---    - `<CR>` - Confirm selection
---    - `<S-CR>` - Confirm with replacement
---    - `<Tab>/<S-Tab>` - Navigate completion items or snippets
---
--- 3. Features:
---    - Ghost text preview
---    - Icons for different completion types
---    - Source indicators ([LSP], [Buffer], etc.)
---    - Command-line completion for / ? :
---    - Snippet support with friendly-snippets included
---
--- The configuration is optimized for performance by:
--- - Loading on InsertEnter
--- - Using the latest versions of plugins
--- - Proper lazy loading of snippets
-
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -39,20 +9,6 @@ return {
       "hrsh7th/cmp-path", -- Path completions
       "hrsh7th/cmp-cmdline", -- Cmdline completions
       "saadparwaiz1/cmp_luasnip", -- Snippet completions
-      {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        build = ":Copilot auth",
-        opts = {
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        },
-      },
-      {
-        "zbirenbaum/copilot-cmp",
-        dependencies = "copilot.lua",
-        opts = {},
-      },
       {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
@@ -110,11 +66,11 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "copilot" },
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
+          { name = "copilot", group_index = 1, priority = 1000 },
+          { name = "nvim_lsp", group_index = 2, priority = 800 },
+          { name = "luasnip", group_index = 2 },
+          { name = "buffer", group_index = 3 },
+          { name = "path", group_index = 3 },
         }),
         formatting = {
           format = function(entry, vim_item)
@@ -132,30 +88,9 @@ return {
           end
         },
         experimental = {
-          ghost_text = true,
+          ghost_text = false,
         },
       })
-
-      -- TODO: Fix this. Autocomplete messed up regular tab completion
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      -- cmp.setup.cmdline({ '/', '?' }, {
-      --   mapping = cmp.mapping.preset.cmdline(),
-      --   sources = {
-      --     { name = 'buffer' }
-      --   }
-      -- })
-
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-
-      -- cmp.setup.cmdline(':', {})
-      -- cmp.setup.cmdline(':', {
-      --   mapping = cmp.mapping.preset.cmdline(),
-      --   sources = cmp.config.sources({
-      --     { name = 'path' }
-      --   }, {
-      --     { name = 'cmdline' }
-      --   })
-      -- })
     end,
   },
 }
