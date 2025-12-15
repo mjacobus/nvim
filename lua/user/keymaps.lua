@@ -70,7 +70,7 @@ map("n", "<c-w>t", ":tabnew<cr>", { desc = "New tab" })
 
 -- Insert helpers
 map("i", ",e", "<Esc>/[\\]})\"']<cr><Esc>:nohlsearch<cr>a", opts)
--- map("i", "<C-l>", "<Space>=><Space>", opts)
+map("i", "<C-l>", "<Space>=><Space>", opts)
 
 -- Hashrocket
 map("v", "<leader>h", [[:s/\:\([a-zA-Z_]\+\)\s\+=>/\=printf("%s:", submatch(1))/g<CR><ESC>:let @/ = ""<CR>]], opts)
@@ -185,14 +185,3 @@ end, { desc = "Previous alternative file" })
 
 map("t", "<esc>", "<C-\\><C-n>", { desc = "Escape terminal mode" })
 map("t", "jj", "<C-\\><C-n>", { desc = "Escape terminal mode with jj" })
-
-
-map("i", "<C-l>", function()
-  local cmp = require("cmp")
-
-  if cmp.visible() then
-    cmp.confirm({ select = true })
-  else
-    return vim.fn["copilot#Accept"]()
-  end
-end, { expr = true, silent = true, desc = "Accept Copilot or CMP" })
