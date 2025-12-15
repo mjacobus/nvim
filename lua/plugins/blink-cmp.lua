@@ -90,7 +90,12 @@ return {
           selection = {
             preselect = true
           }
-        }
+        },
+        accept = {
+          auto_brackets = {
+            enabled = true,  -- Auto-insert () for functions/methods
+          },
+        },
       },
       signature = { window = { border = 'single' } },
 
