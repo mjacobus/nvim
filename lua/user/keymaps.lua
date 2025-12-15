@@ -187,63 +187,12 @@ map("t", "<esc>", "<C-\\><C-n>", { desc = "Escape terminal mode" })
 map("t", "jj", "<C-\\><C-n>", { desc = "Escape terminal mode with jj" })
 
 
--- From old, might be dup
--- -- Jumps to the next position after the closest closing char
--- map("i", ",e", "<Esc>/[\\]})\"']<cr><Esc>:nohlsearch<cr>a", { desc = "Jump to next closing char" })
---
--- -- Adds arrow
--- map("i", "<C-l>", "<Space>=><Space>", { desc = "Insert arrow" })
---
--- -- Rails specific
--- map(
---   "v",
---   "<leader>h",
---   ':s/\\:\\([a-zA-Z_]\\+\\)\\s\\+=>/\\=printf("%s:", submatch(1))/g<CR><ESC>:let @/ = ""<CR>',
---   { desc = "Convert hash rocket to symbol" }
--- )
--- map("n", "<Leader>qq", "<ESC>:q<cr>", { desc = "Quit" })
---
--- -- Reload buffer
--- map("n", "<Leader>rel", ":e<CR>", { desc = "Reload buffer" })
---
--- -- Find
--- map("n", "<leader>f", "<ESC>/", { desc = "Find" })
--- map("n", "<leader>*", "<ESC>:find<space>", { desc = "Find file" })
---
--- -- Use Q for formatting the current paragraph (or selection)
--- map("v", "Q", "gq", { desc = "Format selection" })
--- map("n", "Q", "gqap", { desc = "Format paragraph" })
---
--- -- Buffer resizing mappings (shift + arrow key)
--- map("n", "<Up>", "<c-w>+", { desc = "Resize buffer up" })
--- map("n", "<Down>", "<c-w>-", { desc = "Resize buffer down" })
--- map("n", "<Left>", "<c-w><", { desc = "Resize buffer left" })
--- map("n", "<Right>", "<c-w>>", { desc = "Resize buffer right" })
---
--- map("n", "<leader><leader>xx", "<esc>:!chmod +x %<cr>", { desc = "Make file executable" })
---
--- map("n", "<leader><leader>b", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search in current buffer" })
---
--- -- Marks
--- map("n", "<leader>mA", "ma", { desc = "Set mark 'a'" })
--- map("n", "<leader>ma", "'a", { desc = "Go to mark 'a'" })
--- map("n", "<leader>m1", "'a", { desc = "Go to mark 'a'" })
---
--- map("n", "<leader>mB", "mb", { desc = "Set mark 'b'" })
--- map("n", "<leader>mb", "'b", { desc = "Go to mark 'b'" })
--- map("n", "<leader>m2", "'b", { desc = "Go to mark 'b'" })
---
--- map("n", "<leader>mC", "mc", { desc = "Set mark 'c'" })
--- map("n", "<leader>mc", "'c", { desc = "Go to mark 'c'" })
--- map("n", "<leader>m3", "'c", { desc = "Go to mark 'c'" })
---
--- map("n", "<leader>mD", "md", { desc = "Set mark 'd'" })
--- map("n", "<leader>md", "'d", { desc = "Go to mark 'd'" })
--- map("n", "<leader>m4", "'d", { desc = "Go to mark 'd'" })
---
--- map("n", "<leader>mE", "me", { desc = "Set mark 'e'" })
--- map("n", "<leader>me", "'e", { desc = "Go to mark 'e'" })
--- map("n", "<leader>m5", "'e", { desc = "Go to mark 'e'" })
---
--- -- Notes
--- map("n", "<leader>no", ":vs ~/.tmp/notes.md<cr>", { desc = "Open notes" })
+map("i", "<C-l>", function()
+  local cmp = require("cmp")
+
+  if cmp.visible() then
+    cmp.confirm({ select = true })
+  else
+    return vim.fn["copilot#Accept"]()
+  end
+end, { expr = true, silent = true, desc = "Accept Copilot or CMP" })
